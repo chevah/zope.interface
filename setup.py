@@ -78,6 +78,9 @@ if is_jython or is_pypy:
     ext_modules = []
 else:
     ext_modules = codeoptimization
+    # For Chevah, we disable code optimization to simplify deployment.
+    ext_modules = []
+
 tests_require = [
     # The test dependencies should NOT have direct or transitive
     # dependencies on zope.interface.
@@ -100,7 +103,7 @@ long_description = (
         )
 
 setup(name='zope.interface',
-      version='5.4.0',
+      version='5.4.0+chevah.2',
       url='https://github.com/zopefoundation/zope.interface',
       license='ZPL 2.1',
       description='Interfaces for Python',
@@ -128,9 +131,6 @@ setup(name='zope.interface',
       packages=find_packages('src'),
       package_dir={'': 'src'},
       namespace_packages=["zope"],
-      cmdclass={
-          'build_ext': optional_build_ext,
-      },
       test_suite='zope.interface.tests',
       include_package_data=True,
       zip_safe=False,
