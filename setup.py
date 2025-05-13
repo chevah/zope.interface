@@ -31,7 +31,7 @@ from setuptools import setup
 from setuptools.command.build_ext import build_ext
 
 
-version = '7.2'
+version = '7.2+chevah.1'
 
 
 class optional_build_ext(build_ext):
@@ -132,9 +132,6 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     namespace_packages=["zope"],
-    cmdclass={
-        'build_ext': optional_build_ext,
-    },
     include_package_data=True,
     zip_safe=False,
     install_requires=['setuptools'],
@@ -146,6 +143,5 @@ setup(
         'test': tests_require,
         'testing': testing_extras,
     },
-    ext_modules=ext_modules,
     keywords=['interface', 'components', 'plugins'],
 )
